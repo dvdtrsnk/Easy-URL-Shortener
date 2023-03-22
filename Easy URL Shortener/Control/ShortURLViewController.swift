@@ -21,6 +21,8 @@ class ShortURLViewController: UIViewController {
     
     @IBOutlet weak var urlFieldView: UIView!
     
+    @IBOutlet weak var bottomViewBotConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,8 +32,25 @@ class ShortURLViewController: UIViewController {
         noResultView.isHidden = false
         problemResultView.isHidden = false
         okResultView.isHidden = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+            bottomViewBotConstraint.constant = 0 + keyboardHeight
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        bottomViewBotConstraint.constant = 83
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
 
 }
 
