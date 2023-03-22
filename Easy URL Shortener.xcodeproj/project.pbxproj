@@ -14,7 +14,6 @@
 		6375A13A29CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */; };
 		6375A13C29CA006200D56E64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13B29CA006200D56E64 /* Assets.xcassets */; };
 		6375A13F29CA006200D56E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13D29CA006200D56E64 /* LaunchScreen.storyboard */; };
-		6375A14D29CAF22400D56E64 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14C29CAF22400D56E64 /* HistoryViewController.swift */; };
 		6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		6375A13B29CA006200D56E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6375A13E29CA006200D56E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6375A14029CA006200D56E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6375A14C29CAF22400D56E64 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				6375A13329CA006100D56E64 /* ShortURLViewController.swift */,
-				6375A14C29CAF22400D56E64 /* HistoryViewController.swift */,
 				6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */,
 			);
 			path = Control;
@@ -166,7 +163,6 @@
 				6375A13A29CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld in Sources */,
 				6375A13429CA006100D56E64 /* ShortURLViewController.swift in Sources */,
 				6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */,
-				6375A14D29CAF22400D56E64 /* HistoryViewController.swift in Sources */,
 				6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */,
 				6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */,
 			);
