@@ -16,6 +16,7 @@
 		6375A13F29CA006200D56E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13D29CA006200D56E64 /* LaunchScreen.storyboard */; };
 		6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */; };
 		63A63C9D29CB466E00FDFA06 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63C9C29CB466E00FDFA06 /* Constants.swift */; };
+		63A63CA029CB530B00FDFA06 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6375A14029CA006200D56E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		63A63C9C29CB466E00FDFA06 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +66,12 @@
 			children = (
 				6375A12F29CA006100D56E64 /* AppDelegate.swift */,
 				6375A13129CA006100D56E64 /* SceneDelegate.swift */,
-				6375A14B29CAF03F00D56E64 /* Control */,
+				63A63C9E29CB529F00FDFA06 /* Model */,
 				6375A14A29CAF03800D56E64 /* View */,
+				6375A14B29CAF03F00D56E64 /* Control */,
 				6375A13B29CA006200D56E64 /* Assets.xcassets */,
 				6375A13D29CA006200D56E64 /* LaunchScreen.storyboard */,
 				6375A14029CA006200D56E64 /* Info.plist */,
-				6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */,
 				63A63C9C29CB466E00FDFA06 /* Constants.swift */,
 			);
 			path = "Easy URL Shortener";
@@ -90,6 +92,15 @@
 				6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */,
 			);
 			path = Control;
+			sourceTree = "<group>";
+		};
+		63A63C9E29CB529F00FDFA06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */,
+				63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 				6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */,
 				6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */,
 				63A63C9D29CB466E00FDFA06 /* Constants.swift in Sources */,
+				63A63CA029CB530B00FDFA06 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
