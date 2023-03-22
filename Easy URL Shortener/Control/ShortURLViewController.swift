@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ShortURLViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A12F29CA006100D56E64 /* AppDelegate.swift */; };
 		6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13129CA006100D56E64 /* SceneDelegate.swift */; };
-		6375A13429CA006100D56E64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13329CA006100D56E64 /* ViewController.swift */; };
+		6375A13429CA006100D56E64 /* ShortURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13329CA006100D56E64 /* ShortURLViewController.swift */; };
 		6375A13729CA006100D56E64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13529CA006100D56E64 /* Main.storyboard */; };
 		6375A13A29CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */; };
 		6375A13C29CA006200D56E64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13B29CA006200D56E64 /* Assets.xcassets */; };
 		6375A13F29CA006200D56E64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6375A13D29CA006200D56E64 /* LaunchScreen.storyboard */; };
-		6375A14929CAED8E00D56E64 /* TapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14829CAED8E00D56E64 /* TapBarController.swift */; };
+		6375A14D29CAF22400D56E64 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14C29CAF22400D56E64 /* HistoryViewController.swift */; };
+		6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6375A12C29CA006100D56E64 /* Easy URL Shortener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy URL Shortener.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375A12F29CA006100D56E64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6375A13129CA006100D56E64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6375A13329CA006100D56E64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6375A13329CA006100D56E64 /* ShortURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortURLViewController.swift; sourceTree = "<group>"; };
 		6375A13629CA006100D56E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6375A13929CA006100D56E64 /* Easy_URL_Shortener.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Easy_URL_Shortener.xcdatamodel; sourceTree = "<group>"; };
 		6375A13B29CA006200D56E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6375A13E29CA006200D56E64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6375A14029CA006200D56E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6375A14829CAED8E00D56E64 /* TapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarController.swift; sourceTree = "<group>"; };
+		6375A14C29CAF22400D56E64 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,15 +64,32 @@
 			children = (
 				6375A12F29CA006100D56E64 /* AppDelegate.swift */,
 				6375A13129CA006100D56E64 /* SceneDelegate.swift */,
-				6375A14829CAED8E00D56E64 /* TapBarController.swift */,
-				6375A13329CA006100D56E64 /* ViewController.swift */,
-				6375A13529CA006100D56E64 /* Main.storyboard */,
+				6375A14B29CAF03F00D56E64 /* Control */,
+				6375A14A29CAF03800D56E64 /* View */,
 				6375A13B29CA006200D56E64 /* Assets.xcassets */,
 				6375A13D29CA006200D56E64 /* LaunchScreen.storyboard */,
 				6375A14029CA006200D56E64 /* Info.plist */,
 				6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */,
 			);
 			path = "Easy URL Shortener";
+			sourceTree = "<group>";
+		};
+		6375A14A29CAF03800D56E64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6375A13529CA006100D56E64 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6375A14B29CAF03F00D56E64 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				6375A13329CA006100D56E64 /* ShortURLViewController.swift */,
+				6375A14C29CAF22400D56E64 /* HistoryViewController.swift */,
+				6375A14E29CAF22F00D56E64 /* PreferencesViewController.swift */,
+			);
+			path = Control;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,10 +164,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6375A13A29CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld in Sources */,
-				6375A14929CAED8E00D56E64 /* TapBarController.swift in Sources */,
-				6375A13429CA006100D56E64 /* ViewController.swift in Sources */,
+				6375A13429CA006100D56E64 /* ShortURLViewController.swift in Sources */,
 				6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */,
+				6375A14D29CAF22400D56E64 /* HistoryViewController.swift in Sources */,
 				6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */,
+				6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

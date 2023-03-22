@@ -1,5 +1,5 @@
 //
-//  TapBarController.swift
+//  HistoryViewController.swift
 //  Easy URL Shortener
 //
 //  Created by David Třešňák on 22.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TapBarController: UITabBarController {
+class HistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
