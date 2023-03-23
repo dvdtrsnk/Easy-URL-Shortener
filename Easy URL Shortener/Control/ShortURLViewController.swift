@@ -9,10 +9,18 @@ import UIKit
 
 class ShortURLViewController: UIViewController {
 
+    var networkingManager = NetworkingManager()
+    var displayedURL: String?
+    var displayedShortURL: String?
+    
     @IBOutlet weak var resultStackView: UIStackView!
     @IBOutlet weak var noResultView: UIView!
     @IBOutlet weak var problemResultView: UIView!
     @IBOutlet weak var okResultView: UIView!
+    
+    @IBOutlet weak var okResultUrlLabel: UILabel!
+    @IBOutlet weak var okResultShortUrlLabel: UILabel!
+    
     @IBOutlet weak var historyView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomUrlView: UIView!
@@ -26,6 +34,7 @@ class ShortURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        networkingManager.delegate = self
         setUI()
         registerNotifications()
         updateUI()
@@ -51,6 +60,8 @@ class ShortURLViewController: UIViewController {
             bottomUrlViewCancelButton.isHidden = false
             bottomUrlViewPasteButton.isHidden = true
         }
+        okResultUrlLabel.text = displayedURL
+        okResultShortUrlLabel.text = displayedShortURL
     }
     
     private func registerNotifications() {
@@ -105,7 +116,11 @@ class ShortURLViewController: UIViewController {
 extension ShortURLViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let filledURL = bottomUrlTextField.text {
+            networkingManager.performRequest(filledURL)
+        }
         self.view.endEditing(true)
+        return true
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -115,4 +130,20 @@ extension ShortURLViewController: UITextFieldDelegate {
 
 }
 
+//MARK: - NetworkingManager Delegate
+extension ShortURLViewController: NetworkingManagerDelegate {
+    func serverDidShortURL(_ recievedURL: URLModel) {
+        DispatchQueue.main.async { [self] in
+            displayedURL = recievedURL.url
+            displayedShortURL = recievedURL.full
+            updateUI()
+        }
+        
+        print("URL: \(displayedURL), ShortURL: \(displayedShortURL)")
+    }
+    
+    func serverDidReturnError(_ recievedError: Error) {
+        print(recievedError)
+    }
+}
 
