@@ -39,10 +39,10 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="652"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-36-HY1">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1740.6666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1868.6666666666667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-NK-hKm" userLabel="Result View">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="540.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="668.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shorten URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npG-ac-4vQ">
                                                         <rect key="frame" x="24" y="32" width="345" height="42"/>
@@ -51,7 +51,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QAi-7K-k5I" userLabel="Results StackView">
-                                                        <rect key="frame" x="16" y="90.000000000000028" width="361" height="442.66666666666674"/>
+                                                        <rect key="frame" x="16" y="90" width="361" height="570.66666666666663"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-6L-KIl" userLabel="NoResultView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="72.666666666666671"/>
@@ -70,8 +70,26 @@
                                                                     <constraint firstAttribute="bottom" secondItem="4ra-CM-8nv" secondAttribute="bottom" constant="16" id="uR6-wa-IS5"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au6-3I-nHz">
+                                                                <rect key="frame" x="0.0" y="72.666666666666657" width="361" height="128"/>
+                                                                <subviews>
+                                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="X7u-qk-uPA">
+                                                                        <rect key="frame" x="155.66666666666666" y="39.000000000000028" width="50" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="50" id="HM9-dv-3dh"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="sY6-SR-Cjx"/>
+                                                                        </constraints>
+                                                                    </activityIndicatorView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="X7u-qk-uPA" firstAttribute="centerY" secondItem="au6-3I-nHz" secondAttribute="centerY" id="2M3-pB-FkL"/>
+                                                                    <constraint firstItem="X7u-qk-uPA" firstAttribute="centerX" secondItem="au6-3I-nHz" secondAttribute="centerX" id="7ct-be-Qg8"/>
+                                                                    <constraint firstAttribute="height" constant="128" id="fY9-dh-gvS"/>
+                                                                </constraints>
+                                                            </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-IW-RXY" userLabel="ProblemResultView">
-                                                                <rect key="frame" x="0.0" y="72.666666666666657" width="361" height="101"/>
+                                                                <rect key="frame" x="0.0" y="200.66666666666669" width="361" height="101"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-kR-Rda">
                                                                         <rect key="frame" x="16" y="16" width="329" height="69"/>
@@ -82,7 +100,7 @@
                                                                                 <imageReference key="image" image="exclamationmark.icloud.fill" catalog="system" symbolScale="large"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Problem with Shortening your URL. Check your internet connection." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-6V-NCU">
-                                                                                <rect key="frame" x="0.0" y="28.333333333333339" width="329" height="40.666666666666657"/>
+                                                                                <rect key="frame" x="0.0" y="28.333333333333311" width="329" height="40.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -98,10 +116,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-m7-ghy" userLabel="OkResultView">
-                                                                <rect key="frame" x="0.0" y="173.66666666666669" width="361" height="269"/>
+                                                                <rect key="frame" x="0.0" y="301.66666666666669" width="361" height="269.00000000000006"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-mF-wPp">
-                                                                        <rect key="frame" x="16" y="16.000000000000028" width="329" height="237"/>
+                                                                        <rect key="frame" x="16" y="16" width="329" height="237"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wS-Bh-UxX">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="17"/>
@@ -110,7 +128,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.yourURL.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oi-gf-VVQ">
-                                                                                <rect key="frame" x="0.0" y="49" width="329" height="20.333333333333329"/>
+                                                                                <rect key="frame" x="0.0" y="48.999999999999943" width="329" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -172,7 +190,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqX-bP-WLr" userLabel="History View">
-                                                <rect key="frame" x="0.0" y="540.66666666666652" width="393" height="1200"/>
+                                                <rect key="frame" x="0.0" y="668.66666666666652" width="393" height="1200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzT-WX-URw">
                                                         <rect key="frame" x="24" y="32" width="345" height="42"/>

@@ -19,6 +19,7 @@
 		63A63CA029CB530B00FDFA06 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */; };
 		63A63CA229CB891300FDFA06 /* URLData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA129CB891300FDFA06 /* URLData.swift */; };
 		63A63CA429CC9FC100FDFA06 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA329CC9FC100FDFA06 /* URLModel.swift */; };
+		63A63CA629CCBCA900FDFA06 /* LocalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA529CCBCA900FDFA06 /* LocalManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		63A63CA129CB891300FDFA06 /* URLData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLData.swift; sourceTree = "<group>"; };
 		63A63CA329CC9FC100FDFA06 /* URLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
+		63A63CA529CCBCA900FDFA06 /* LocalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				63A63C9F29CB530B00FDFA06 /* NetworkingManager.swift */,
 				63A63CA129CB891300FDFA06 /* URLData.swift */,
 				63A63CA329CC9FC100FDFA06 /* URLModel.swift */,
+				63A63CA529CCBCA900FDFA06 /* LocalManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */,
 				6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */,
 				63A63CA429CC9FC100FDFA06 /* URLModel.swift in Sources */,
+				63A63CA629CCBCA900FDFA06 /* LocalManager.swift in Sources */,
 				6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */,
 				63A63CA229CB891300FDFA06 /* URLData.swift in Sources */,
 				63A63C9D29CB466E00FDFA06 /* Constants.swift in Sources */,

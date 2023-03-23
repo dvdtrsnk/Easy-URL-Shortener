@@ -10,5 +10,6 @@ import UIKit
 import CoreData
 
 struct K {
-    
+    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
 }
