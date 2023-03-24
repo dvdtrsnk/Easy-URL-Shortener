@@ -12,4 +12,11 @@ import CoreData
 struct K {
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     static let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
+    
+    struct ResultViewStatus {
+        static let no = "noResultView"
+        static let wait = "waitResultView"
+        static let problem = "problemResultView"
+        static let ok = "okResultView"
+    }
 }

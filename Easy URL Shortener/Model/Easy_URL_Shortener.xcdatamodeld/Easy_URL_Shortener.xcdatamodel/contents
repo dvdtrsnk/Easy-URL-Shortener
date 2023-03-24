@@ -3,7 +3,6 @@
     <entity name="SearchedItem" representedClassName="SearchedItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="full" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
         <attribute name="url" attributeType="String"/>
     </entity>
 </model>

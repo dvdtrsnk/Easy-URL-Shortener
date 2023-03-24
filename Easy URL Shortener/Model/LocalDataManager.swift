@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 import CoreData
 
-struct LocalManager {
+struct LocalDataManager {
     var items = [SearchedItem]()
     
     
-    private func saveData() {
+    func saveData() {
         do {
             try K.context.save()
         } catch {
@@ -21,7 +21,7 @@ struct LocalManager {
         }
     }
     
-    private mutating func loadData() {
+    mutating func loadData() {
         let request : NSFetchRequest<SearchedItem> = SearchedItem.fetchRequest()
         do {
             self.items = try K.context.fetch(request)

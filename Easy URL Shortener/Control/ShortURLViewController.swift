@@ -10,18 +10,22 @@ import UIKit
 class ShortURLViewController: UIViewController {
 
     var networkingManager = NetworkingManager()
+    var localDataManager = LocalDataManager()
     var displayedURL: String?
     var displayedShortURL: String?
     
     @IBOutlet weak var resultStackView: UIStackView!
     @IBOutlet weak var noResultView: UIView!
+    @IBOutlet weak var waitResultView: UIView!
     @IBOutlet weak var problemResultView: UIView!
     @IBOutlet weak var okResultView: UIView!
     
     @IBOutlet weak var okResultUrlLabel: UILabel!
     @IBOutlet weak var okResultShortUrlLabel: UILabel!
     
-    @IBOutlet weak var historyView: UIView!
+    @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var historyViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomUrlView: UIView!
     @IBOutlet weak var bottomBlurView: UIVisualEffectView!
@@ -45,14 +49,13 @@ class ShortURLViewController: UIViewController {
     
     private func setUI() {
         resultStackView.layer.cornerRadius = 10
-        historyView.layer.cornerRadius = 10
+        historyTableView.layer.cornerRadius = 10
         bottomUrlView.layer.cornerRadius = 10
-        noResultView.isHidden = false
-        problemResultView.isHidden = false
-        okResultView.isHidden = false
+        showCorrectResultView(named: K.ResultViewStatus.no)
     }
     
     private func updateUI() {
+        localDataManager.loadData()
         if bottomUrlTextField.text == nil || bottomUrlTextField.text == "" {
             bottomUrlViewCancelButton.isHidden = true
             bottomUrlViewPasteButton.isHidden = false
@@ -62,6 +65,39 @@ class ShortURLViewController: UIViewController {
         }
         okResultUrlLabel.text = displayedURL
         okResultShortUrlLabel.text = displayedShortURL
+        localDataManager.loadData()
+        historyViewHeight.constant = CGFloat(localDataManager.items.count * 44)
+        historyTableView.reloadData()
+    }
+    
+    private func showCorrectResultView(named: String) {
+        noResultView.isHidden = true
+        waitResultView.isHidden = true
+        problemResultView.isHidden = true
+        okResultView.isHidden = true
+        UIView.animate(withDuration: 0.3) { [self] in
+            switch named {
+            case K.ResultViewStatus.no:
+                noResultView.isHidden = false
+            case K.ResultViewStatus.wait:
+                waitResultView.isHidden = false
+            case K.ResultViewStatus.problem:
+                problemResultView.isHidden = false
+            case K.ResultViewStatus.ok:
+                okResultView.isHidden = false
+            default:
+                break
+            }
+        }
+        
+    }
+    
+    private func userPressedGo() {
+        showCorrectResultView(named: K.ResultViewStatus.wait)
+        if let filledURL = bottomUrlTextField.text {
+            networkingManager.performRequest(filledURL)
+        }
+        self.view.endEditing(true)
     }
     
     private func registerNotifications() {
@@ -105,6 +141,7 @@ class ShortURLViewController: UIViewController {
         if let clipboardString = UIPasteboard.general.string {
             bottomUrlTextField.text = clipboardString
             updateUI()
+            userPressedGo()
         }
     }
     
@@ -116,13 +153,10 @@ class ShortURLViewController: UIViewController {
 extension ShortURLViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let filledURL = bottomUrlTextField.text {
-            networkingManager.performRequest(filledURL)
-        }
-        self.view.endEditing(true)
+        userPressedGo()
         return true
     }
-    
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
         updateUI()
     }
@@ -134,16 +168,52 @@ extension ShortURLViewController: UITextFieldDelegate {
 extension ShortURLViewController: NetworkingManagerDelegate {
     func serverDidShortURL(_ recievedURL: URLModel) {
         DispatchQueue.main.async { [self] in
-            displayedURL = recievedURL.url
-            displayedShortURL = recievedURL.full
+            displayedURL = recievedURL.full
+            displayedShortURL = recievedURL.url
+            let newItem = SearchedItem(context: K.context)
+            newItem.full = recievedURL.full
+            newItem.url = recievedURL.url
+            newItem.date = Date()
+            localDataManager.items.append(newItem)
+            localDataManager.saveData()
             updateUI()
+            
+            showCorrectResultView(named: K.ResultViewStatus.ok)
         }
-        
-        print("URL: \(displayedURL), ShortURL: \(displayedShortURL)")
     }
     
     func serverDidReturnError(_ recievedError: Error) {
         print(recievedError)
+        showCorrectResultView(named: K.ResultViewStatus.problem)
     }
 }
 
+//MARK: - UITableView Datasource
+extension ShortURLViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberToReturn: Int?
+        if localDataManager.items.count == 0 {
+            numberToReturn = 1
+        } else {
+            numberToReturn = localDataManager.items.count
+        }
+        
+        return numberToReturn!
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        if localDataManager.items.count == 0 {
+            cell.textLabel?.text = "Empty history"
+        } else {
+            cell.textLabel?.text = localDataManager.items[indexPath.row].full
+
+        }
+        return cell
+    }
+}
+
+//MARK: - UITableView Delegate
+extension ShortURLViewController: UITableViewDelegate {
+    
+}
