@@ -93,6 +93,7 @@ class ShortURLViewController: UIViewController {
     }
     
     private func userPressedGo() {
+        print("userPressedGo")
         showCorrectResultView(named: K.ResultViewStatus.wait)
         if let filledURL = bottomUrlTextField.text {
             networkingManager.performRequest(filledURL)
@@ -166,6 +167,13 @@ extension ShortURLViewController: UITextFieldDelegate {
 
 //MARK: - NetworkingManager Delegate
 extension ShortURLViewController: NetworkingManagerDelegate {
+    
+    func serverCouldntBeReached(_ recievedError: Error) {
+        print("errrr")
+    }
+    
+    
+    
     func serverDidShortURL(_ recievedURL: URLModel) {
         DispatchQueue.main.async { [self] in
             displayedURL = recievedURL.full

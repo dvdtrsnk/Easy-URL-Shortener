@@ -11,6 +11,7 @@ import UIKit
 protocol NetworkingManagerDelegate {
     func serverDidShortURL(_ recievedURL: URLModel)
     func serverDidReturnError(_ recievedError: Error)
+    func serverCouldntBeReached(_ recievedError: Error)
 }
 
 struct NetworkingManager {
@@ -18,17 +19,25 @@ struct NetworkingManager {
     var delegate: NetworkingManagerDelegate?
     
     func performRequest(_ filledURL: String) {
+        print("performRequest")
         let urlString = "https://ulvis.net/API/write/get?url=\(filledURL)"
         if let url = URL(string: urlString) {
+            print("ifletURL")
             let task = URLSession(configuration: .default).dataTask(with: url) { (recievedData, response, error) in
-                if let error = error {
-                    delegate?.serverDidReturnError(error)
+                print("URLSession")
+                if let recievedError = error {
+                    delegate?.serverDidReturnError(recievedError)
                     return
                 }
                 if let safeData = recievedData {
                     if let shortURL = parseJSON(safeData) {
                         delegate?.serverDidShortURL(shortURL)
                     }
+                    
+                }
+                if let recievedResponse = response {
+                    print("došlo na response \(recievedResponse)")
+                    return 
                 }
             }
             task.resume()
@@ -54,9 +63,7 @@ struct NetworkingManager {
             return nil
         }
     }
-    
-    
-    
-    
-    
 }
+    
+    
+    
