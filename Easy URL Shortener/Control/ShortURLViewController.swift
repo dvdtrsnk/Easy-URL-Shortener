@@ -17,11 +17,13 @@ class ShortURLViewController: UIViewController {
     @IBOutlet weak var resultStackView: UIStackView!
     @IBOutlet weak var noResultView: UIView!
     @IBOutlet weak var waitResultView: UIView!
-    @IBOutlet weak var noInternetConnection: UIView!
-    @IBOutlet weak var okResultView: UIView!
+    @IBOutlet weak var noInternetConnectionResultView: UIView!
     
-    @IBOutlet weak var okResultUrlLabel: UILabel!
-    @IBOutlet weak var okResultShortUrlLabel: UILabel!
+    @IBOutlet weak var successFalseResultView: UIView!
+    @IBOutlet weak var successTrueResultView: UIView!
+    
+    @IBOutlet weak var successTrueResultUrlLabel: UILabel!
+    @IBOutlet weak var successTrueResultShortUrlLabel: UILabel!
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var historyViewHeight: NSLayoutConstraint!
@@ -37,10 +39,8 @@ class ShortURLViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        networkingManager.delegate = self
         setUI()
-        registerNotifications()
+        registerNotificationsAndDelegates()
         updateUI()
     }
     
@@ -63,18 +63,21 @@ class ShortURLViewController: UIViewController {
             bottomUrlViewCancelButton.isHidden = false
             bottomUrlViewPasteButton.isHidden = true
         }
-        okResultUrlLabel.text = displayedURL
-        okResultShortUrlLabel.text = displayedShortURL
+        successTrueResultUrlLabel.text = displayedURL
+        successTrueResultShortUrlLabel.text = displayedShortURL
         localDataManager.loadData()
-        historyViewHeight.constant = CGFloat(localDataManager.items.count * 44)
         historyTableView.reloadData()
+        historyViewHeight.constant = CGFloat(min(localDataManager.items.count * 44, 880))
+        print(localDataManager.items.count)
+
     }
     
     private func showCorrectResultView(named: String) {
         noResultView.isHidden = true
         waitResultView.isHidden = true
-        noInternetConnection.isHidden = true
-        okResultView.isHidden = true
+        noInternetConnectionResultView.isHidden = true
+        successFalseResultView.isHidden = true
+        successTrueResultView.isHidden = true
         UIView.animate(withDuration: 0.3) { [self] in
             switch named {
             case K.ResultViewStatus.no:
@@ -82,9 +85,11 @@ class ShortURLViewController: UIViewController {
             case K.ResultViewStatus.wait:
                 waitResultView.isHidden = false
             case K.ResultViewStatus.noInternetConnection:
-                noInternetConnection.isHidden = false
-            case K.ResultViewStatus.ok:
-                okResultView.isHidden = false
+                noInternetConnectionResultView.isHidden = false
+            case K.ResultViewStatus.successFalse:
+                successFalseResultView.isHidden = false
+            case K.ResultViewStatus.successTrue:
+                successTrueResultView.isHidden = false
             default:
                 break
             }
@@ -93,16 +98,25 @@ class ShortURLViewController: UIViewController {
     }
     
     private func userPressedGo() {
-        showCorrectResultView(named: K.ResultViewStatus.wait)
-        if let filledURL = bottomUrlTextField.text {
-            networkingManager.performRequest(filledURL)
+        if bottomUrlTextField.text != nil || bottomUrlTextField.text != "" {
+            networkingManager.performRequest(bottomUrlTextField.text!)
+            showCorrectResultView(named: K.ResultViewStatus.wait)
+            let newItem = SearchedItem(context: K.context)
+            newItem.full = bottomUrlTextField.text
+            newItem.date = Date()
+            localDataManager.items.append(newItem)
+            localDataManager.saveData()
+            updateUI()
         }
+
         self.view.endEditing(true)
     }
     
-    private func registerNotifications() {
+    private func registerNotificationsAndDelegates() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        networkingManager.delegate = self
+
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -171,55 +185,42 @@ extension ShortURLViewController: NetworkingManagerDelegate {
         showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
     }
     
-    func serverDidShortURL(_ recievedURL: URLModel) {
+    func serverDidReturnSuccessTrue(_ recievedURL: URLModel) {
         DispatchQueue.main.async { [self] in
             displayedURL = recievedURL.full
             displayedShortURL = recievedURL.url
-            let newItem = SearchedItem(context: K.context)
-            newItem.full = recievedURL.full
-            newItem.url = recievedURL.url
-            newItem.date = Date()
-            localDataManager.items.append(newItem)
-            localDataManager.saveData()
             updateUI()
-            
-            showCorrectResultView(named: K.ResultViewStatus.ok)
+            showCorrectResultView(named: K.ResultViewStatus.successTrue)
         }
     }
     
-    func serverDidReturnError(_ recievedError: Error) {
-        print(recievedError)
-        print("serverDidReturnError")
-        showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
+    func serverDidReturnSuccessFalse() {
+        DispatchQueue.main.async { [self] in
+            showCorrectResultView(named: K.ResultViewStatus.successFalse)
+        }
     }
+
 }
 
 //MARK: - UITableView Datasource
 extension ShortURLViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberToReturn: Int?
-        if localDataManager.items.count == 0 {
-            numberToReturn = 1
-        } else {
-            numberToReturn = localDataManager.items.count
-        }
-        
-        return numberToReturn!
+        return localDataManager.items.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.textLabel?.text = localDataManager.items[indexPath.row].full
         
-        if localDataManager.items.count == 0 {
-            cell.textLabel?.text = "Empty history"
-        } else {
-            cell.textLabel?.text = localDataManager.items[indexPath.row].full
 
-        }
         return cell
     }
 }
 
 //MARK: - UITableView Delegate
 extension ShortURLViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        bottomUrlTextField.text =  localDataManager.items[indexPath.row].full
+        userPressedGo()
+    }
     
 }

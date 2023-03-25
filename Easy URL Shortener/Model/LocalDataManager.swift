@@ -23,6 +23,9 @@ struct LocalDataManager {
     
     mutating func loadData() {
         let request : NSFetchRequest<SearchedItem> = SearchedItem.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
         do {
             self.items = try K.context.fetch(request)
         } catch {
