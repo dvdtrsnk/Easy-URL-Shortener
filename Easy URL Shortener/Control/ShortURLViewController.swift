@@ -168,8 +168,9 @@ extension ShortURLViewController: UITextFieldDelegate {
 //MARK: - NetworkingManager Delegate
 extension ShortURLViewController: NetworkingManagerDelegate {
     
-    func serverCouldntBeReached(_ recievedError: Error) {
+    func deviceDoesNotHaveInternetConnection() {
         print("errrr")
+        showCorrectResultView(named: K.ResultViewStatus.problem)
     }
     
     
