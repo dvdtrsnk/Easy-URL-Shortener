@@ -17,7 +17,7 @@ class ShortURLViewController: UIViewController {
     @IBOutlet weak var resultStackView: UIStackView!
     @IBOutlet weak var noResultView: UIView!
     @IBOutlet weak var waitResultView: UIView!
-    @IBOutlet weak var problemResultView: UIView!
+    @IBOutlet weak var noInternetConnection: UIView!
     @IBOutlet weak var okResultView: UIView!
     
     @IBOutlet weak var okResultUrlLabel: UILabel!
@@ -73,7 +73,7 @@ class ShortURLViewController: UIViewController {
     private func showCorrectResultView(named: String) {
         noResultView.isHidden = true
         waitResultView.isHidden = true
-        problemResultView.isHidden = true
+        noInternetConnection.isHidden = true
         okResultView.isHidden = true
         UIView.animate(withDuration: 0.3) { [self] in
             switch named {
@@ -81,8 +81,8 @@ class ShortURLViewController: UIViewController {
                 noResultView.isHidden = false
             case K.ResultViewStatus.wait:
                 waitResultView.isHidden = false
-            case K.ResultViewStatus.problem:
-                problemResultView.isHidden = false
+            case K.ResultViewStatus.noInternetConnection:
+                noInternetConnection.isHidden = false
             case K.ResultViewStatus.ok:
                 okResultView.isHidden = false
             default:
@@ -93,7 +93,6 @@ class ShortURLViewController: UIViewController {
     }
     
     private func userPressedGo() {
-        print("userPressedGo")
         showCorrectResultView(named: K.ResultViewStatus.wait)
         if let filledURL = bottomUrlTextField.text {
             networkingManager.performRequest(filledURL)
@@ -169,11 +168,8 @@ extension ShortURLViewController: UITextFieldDelegate {
 extension ShortURLViewController: NetworkingManagerDelegate {
     
     func deviceDoesNotHaveInternetConnection() {
-        print("errrr")
-        showCorrectResultView(named: K.ResultViewStatus.problem)
+        showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
     }
-    
-    
     
     func serverDidShortURL(_ recievedURL: URLModel) {
         DispatchQueue.main.async { [self] in
@@ -193,7 +189,8 @@ extension ShortURLViewController: NetworkingManagerDelegate {
     
     func serverDidReturnError(_ recievedError: Error) {
         print(recievedError)
-        showCorrectResultView(named: K.ResultViewStatus.problem)
+        print("serverDidReturnError")
+        showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
     }
 }
 

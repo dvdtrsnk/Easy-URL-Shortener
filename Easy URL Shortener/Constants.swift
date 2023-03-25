@@ -16,7 +16,7 @@ struct K {
     struct ResultViewStatus {
         static let no = "noResultView"
         static let wait = "waitResultView"
-        static let problem = "problemResultView"
+        static let noInternetConnection = "noInternetConnectionResultView"
         static let ok = "okResultView"
     }
 }

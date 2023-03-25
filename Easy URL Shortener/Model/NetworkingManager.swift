@@ -20,13 +20,10 @@ struct NetworkingManager {
     var delegate: NetworkingManagerDelegate?
     
     func performRequest(_ filledURL: String) {
-        print("performRequest")
         if deviceHasInternetConnection() {
             let urlString = "https://ulvis.net/API/write/get?url=\(filledURL)"
             if let url = URL(string: urlString) {
-                print("ifletURL")
                 let task = URLSession(configuration: .default).dataTask(with: url) { (recievedData, response, error) in
-                    print("URLSession")
                     if let recievedError = error {
                         delegate?.serverDidReturnError(recievedError)
                         return

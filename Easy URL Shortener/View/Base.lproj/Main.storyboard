@@ -87,7 +87,7 @@
                                                                     <constraint firstAttribute="height" constant="128" id="fY9-dh-gvS"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-IW-RXY" userLabel="ProblemResultView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-IW-RXY" userLabel="noInternetConnectionResultView">
                                                                 <rect key="frame" x="0.0" y="200.66666666666669" width="361" height="101"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-kR-Rda">
@@ -328,11 +328,11 @@
                         <outlet property="bottomView" destination="iLB-E2-aPJ" id="Nsb-wj-58M"/>
                         <outlet property="historyTableView" destination="FlG-hN-Cgh" id="mRF-A4-CvT"/>
                         <outlet property="historyViewHeight" destination="s8w-Qi-oI1" id="dwx-G4-zH9"/>
+                        <outlet property="noInternetConnection" destination="S5m-IW-RXY" id="x50-v4-IG0"/>
                         <outlet property="noResultView" destination="6xx-6L-KIl" id="pok-tc-7Ms"/>
                         <outlet property="okResultShortUrlLabel" destination="34L-NU-KnU" id="KCZ-ow-dlb"/>
                         <outlet property="okResultUrlLabel" destination="2oi-gf-VVQ" id="vKY-pD-n9X"/>
                         <outlet property="okResultView" destination="m2S-m7-ghy" id="ecg-vL-ysf"/>
-                        <outlet property="problemResultView" destination="S5m-IW-RXY" id="x50-v4-IG0"/>
                         <outlet property="resultStackView" destination="QAi-7K-k5I" id="BP5-uF-0Wy"/>
                         <outlet property="waitResultView" destination="au6-3I-nHz" id="TJF-th-beP"/>
                     </connections>
