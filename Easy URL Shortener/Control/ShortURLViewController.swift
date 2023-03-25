@@ -142,6 +142,18 @@ class ShortURLViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+        return nil
+    }
 
     //MARK: - IBAction Buttons
     
@@ -160,6 +172,47 @@ class ShortURLViewController: UIViewController {
     }
     
     
+    @IBAction func copyButtonPressed(_ sender: UIButton) {
+        if let url = displayedShortURL {
+            UIPasteboard.general.string = url
+            let alert = UIAlertController(title: nil, message: "URL was copied to clipboard", preferredStyle: .alert)
+            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
+        if let url = URL(string: displayedShortURL!) {
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    @IBAction func qrButtonPressed(_ sender: UIButton) {
+        if let shortURL = displayedShortURL {
+            let alert = UIAlertController(title: "QR Code", message: "", preferredStyle: .alert)
+
+            // generate QR code image
+            let image = generateQRCode(from: shortURL, size: CGSize(width: 250, height: 250))
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+
+            // set image view constraints to center it within the alert
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            alert.view.addSubview(imageView)
+            imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+            imageView.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
     
 }
 
