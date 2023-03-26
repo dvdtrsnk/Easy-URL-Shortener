@@ -185,7 +185,7 @@
                                                                                         <state key="normal" title="Button"/>
                                                                                         <buttonConfiguration key="configuration" style="plain" image="qrcode" catalog="system" title="QR"/>
                                                                                         <connections>
-                                                                                            <action selector="qrButtonPressed:" destination="gsR-Fy-AOc" eventType="touchUpInside" id="DSM-Cg-oMz"/>
+                                                                                            <action selector="qrButtonPressed:" destination="gsR-Fy-AOc" eventType="touchUpInside" id="M1x-v2-P2G"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -362,6 +362,9 @@
                         <outlet property="successTrueResultUrlLabel" destination="2oi-gf-VVQ" id="vKY-pD-n9X"/>
                         <outlet property="successTrueResultView" destination="m2S-m7-ghy" id="ecg-vL-ysf"/>
                         <outlet property="waitResultView" destination="au6-3I-nHz" id="TJF-th-beP"/>
+                        <segue destination="UIp-Mv-iNC" kind="popoverPresentation" identifier="ShowQRSegue" popoverAnchorView="bQB-w1-pu7" id="062-Xy-2OJ">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9c-Wx-jhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -438,8 +441,46 @@
             </objects>
             <point key="canvasLocation" x="-260.30534351145036" y="1334.5070422535211"/>
         </scene>
+        <!--QR View Controller-->
+        <scene sceneID="Kxf-M2-yQC">
+            <objects>
+                <viewController id="UIp-Mv-iNC" userLabel="QR View Controller" customClass="QRViewController" customModule="Easy_URL_Shortener" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oVg-xm-Rln" customClass="QRViewC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_background_fade" translatesAutoresizingMaskIntoConstraints="NO" id="VDd-UI-Yrl" userLabel="background">
+                                <rect key="frame" x="0.0" y="-15" width="393" height="848"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cfi-nj-dxP">
+                                <rect key="frame" x="71.666666666666686" y="268.33333333333337" width="250" height="247.00000000000003"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="1Z0-TC-rmV"/>
+                                    <constraint firstAttribute="width" constant="250" id="kAl-iv-csL"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uuD-j0-wBm"/>
+                        <constraints>
+                            <constraint firstItem="VDd-UI-Yrl" firstAttribute="bottom" secondItem="uuD-j0-wBm" secondAttribute="bottom" constant="50" id="6l6-SH-baz"/>
+                            <constraint firstItem="cfi-nj-dxP" firstAttribute="centerX" secondItem="oVg-xm-Rln" secondAttribute="centerX" id="8nz-OF-87M"/>
+                            <constraint firstItem="VDd-UI-Yrl" firstAttribute="leading" secondItem="uuD-j0-wBm" secondAttribute="leading" id="Yct-15-G8P"/>
+                            <constraint firstItem="VDd-UI-Yrl" firstAttribute="top" secondItem="oVg-xm-Rln" secondAttribute="top" constant="-15" id="sj3-OA-v1A"/>
+                            <constraint firstItem="uuD-j0-wBm" firstAttribute="trailing" secondItem="VDd-UI-Yrl" secondAttribute="trailing" id="uD7-Dg-Bym"/>
+                            <constraint firstItem="cfi-nj-dxP" firstAttribute="centerY" secondItem="oVg-xm-Rln" secondAttribute="centerY" id="xEn-7b-OAb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="qrImageView" destination="cfi-nj-dxP" id="V4K-Zx-7sU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ml-pJ-0t6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1280.1526717557251" y="2024.6478873239437"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="black_background_fade" width="500" height="1000"/>
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="exclamationmark.icloud.fill" catalog="system" width="128" height="90"/>
         <image name="gear" catalog="system" width="128" height="122"/>

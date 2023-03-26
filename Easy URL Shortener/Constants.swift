@@ -20,4 +20,8 @@ struct K {
         static let successFalse = "successFalseResultView"
         static let successTrue = "successTrueResultView"
     }
+    
+    struct Segue {
+        static let showQR = "ShowQRSegue"
+    }
 }

@@ -68,8 +68,6 @@ class ShortURLViewController: UIViewController {
         localDataManager.loadData()
         historyTableView.reloadData()
         historyViewHeight.constant = CGFloat(min(localDataManager.items.count * 44, 880))
-        print(localDataManager.items.count)
-
     }
     
     private func showCorrectResultView(named: String) {
@@ -101,6 +99,13 @@ class ShortURLViewController: UIViewController {
         if bottomUrlTextField.text != nil || bottomUrlTextField.text != "" {
             networkingManager.performRequest(bottomUrlTextField.text!)
             showCorrectResultView(named: K.ResultViewStatus.wait)
+            
+            
+            let duplicatesToDelete = localDataManager.items.filter { $0.full == bottomUrlTextField.text }
+            for delete in duplicatesToDelete {
+                K.context.delete(delete)
+            }
+            
             let newItem = SearchedItem(context: K.context)
             newItem.full = bottomUrlTextField.text
             newItem.date = Date()
@@ -143,16 +148,11 @@ class ShortURLViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
-            if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.showQR {
+            let destionationVC = segue.destination as! QRViewController
+            destionationVC.displayedShortURL = displayedShortURL
         }
-        return nil
     }
 
     //MARK: - IBAction Buttons
@@ -191,27 +191,8 @@ class ShortURLViewController: UIViewController {
         }
     }
     
-    
     @IBAction func qrButtonPressed(_ sender: UIButton) {
-        if let shortURL = displayedShortURL {
-            let alert = UIAlertController(title: "QR Code", message: "", preferredStyle: .alert)
-
-            // generate QR code image
-            let image = generateQRCode(from: shortURL, size: CGSize(width: 250, height: 250))
-            let imageView = UIImageView(image: image)
-            imageView.contentMode = .scaleAspectFit
-
-            // set image view constraints to center it within the alert
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            alert.view.addSubview(imageView)
-            imageView.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
-            imageView.centerYAnchor.constraint(equalTo: alert.view.centerYAnchor).isActive = true
-            imageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
+        performSegue(withIdentifier: K.Segue.showQR, sender: nil)
     }
     
 }
