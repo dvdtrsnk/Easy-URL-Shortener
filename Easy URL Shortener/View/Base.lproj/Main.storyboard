@@ -218,7 +218,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqX-bP-WLr" userLabel="History View">
                                                 <rect key="frame" x="0.0" y="796.66666666666663" width="393" height="200"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzT-WX-URw">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzT-WX-URw">
                                                         <rect key="frame" x="24" y="32" width="345" height="42"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                         <nil key="textColor"/>
@@ -227,6 +227,9 @@
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FlG-hN-Cgh">
                                                         <rect key="frame" x="16" y="82" width="361" height="110"/>
                                                         <color key="backgroundColor" name="viewBackgroundColorSet"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="110" id="VJK-2p-MWi"/>
+                                                        </constraints>
                                                         <connections>
                                                             <outlet property="dataSource" destination="gsR-Fy-AOc" id="Nwr-wg-zaR"/>
                                                             <outlet property="delegate" destination="gsR-Fy-AOc" id="eCw-2Z-ZwX"/>
@@ -234,14 +237,13 @@
                                                     </tableView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="LzT-WX-URw" firstAttribute="leading" secondItem="mqX-bP-WLr" secondAttribute="leading" constant="24" id="9zL-dg-5aV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="FlG-hN-Cgh" secondAttribute="trailing" constant="16" id="MPO-uY-Rgu"/>
-                                                    <constraint firstItem="LzT-WX-URw" firstAttribute="top" secondItem="mqX-bP-WLr" secondAttribute="top" constant="32" id="S5Z-aM-MWq"/>
-                                                    <constraint firstAttribute="bottom" secondItem="FlG-hN-Cgh" secondAttribute="bottom" constant="8" id="k9d-QB-pPK"/>
-                                                    <constraint firstAttribute="height" constant="200" id="s8w-Qi-oI1"/>
-                                                    <constraint firstItem="FlG-hN-Cgh" firstAttribute="leading" secondItem="mqX-bP-WLr" secondAttribute="leading" constant="16" id="wJS-aU-rki"/>
-                                                    <constraint firstAttribute="trailing" secondItem="LzT-WX-URw" secondAttribute="trailing" constant="24" id="wgL-NK-zci"/>
-                                                    <constraint firstItem="FlG-hN-Cgh" firstAttribute="top" secondItem="LzT-WX-URw" secondAttribute="bottom" constant="8" id="zs6-eB-MAg"/>
+                                                    <constraint firstItem="LzT-WX-URw" firstAttribute="top" secondItem="mqX-bP-WLr" secondAttribute="top" constant="32" id="6zT-mo-pBx"/>
+                                                    <constraint firstItem="FlG-hN-Cgh" firstAttribute="leading" secondItem="mqX-bP-WLr" secondAttribute="leading" constant="16" id="OMD-iU-5ia"/>
+                                                    <constraint firstItem="LzT-WX-URw" firstAttribute="leading" secondItem="mqX-bP-WLr" secondAttribute="leading" constant="24" id="XHM-6b-aEV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LzT-WX-URw" secondAttribute="trailing" constant="24" id="arX-RF-7Gw"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FlG-hN-Cgh" secondAttribute="bottom" constant="8" id="nVF-Ln-11p"/>
+                                                    <constraint firstItem="FlG-hN-Cgh" firstAttribute="top" secondItem="LzT-WX-URw" secondAttribute="bottom" constant="8" id="qQD-xk-4pR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FlG-hN-Cgh" secondAttribute="trailing" constant="16" id="sy9-7Z-9hz"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -337,8 +339,8 @@
                         <outlet property="bottomUrlViewBotConstraint" destination="64o-N1-K5G" id="ftA-Tg-6HW"/>
                         <outlet property="bottomUrlViewPasteButton" destination="5fB-Ox-MtS" id="FIc-0z-Owh"/>
                         <outlet property="bottomView" destination="iLB-E2-aPJ" id="Nsb-wj-58M"/>
-                        <outlet property="historyTableView" destination="FlG-hN-Cgh" id="mRF-A4-CvT"/>
-                        <outlet property="historyViewHeight" destination="s8w-Qi-oI1" id="dwx-G4-zH9"/>
+                        <outlet property="historyTableView" destination="FlG-hN-Cgh" id="Exf-rS-ODh"/>
+                        <outlet property="historyTableViewHeight" destination="VJK-2p-MWi" id="JKO-mf-oa1"/>
                         <outlet property="noInternetConnectionResultView" destination="S5m-IW-RXY" id="x50-v4-IG0"/>
                         <outlet property="noResultView" destination="6xx-6L-KIl" id="pok-tc-7Ms"/>
                         <outlet property="resultStackView" destination="QAi-7K-k5I" id="BP5-uF-0Wy"/>

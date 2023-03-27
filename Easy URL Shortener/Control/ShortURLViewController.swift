@@ -26,7 +26,7 @@ class ShortURLViewController: UIViewController {
     @IBOutlet weak var successTrueResultShortUrlLabel: UILabel!
     
     @IBOutlet weak var historyTableView: UITableView!
-    @IBOutlet weak var historyViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var historyTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomUrlView: UIView!
@@ -66,7 +66,7 @@ class ShortURLViewController: UIViewController {
         successTrueResultShortUrlLabel.text = displayedShortURL
         localDataManager.loadData()
         historyTableView.reloadData()
-        historyViewHeight.constant = CGFloat(min(localDataManager.items.count * 44, 880))
+        historyTableViewHeight.constant = CGFloat(min(localDataManager.items.count * 44, 880))
     }
     
     private func showCorrectResultView(named: String) {
