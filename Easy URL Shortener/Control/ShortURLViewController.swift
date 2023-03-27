@@ -32,7 +32,6 @@ class ShortURLViewController: UIViewController {
     @IBOutlet weak var bottomUrlView: UIView!
     @IBOutlet weak var bottomBlurView: UIVisualEffectView!
     @IBOutlet weak var bottomUrlViewPasteButton: UIButton!
-    @IBOutlet weak var bottomUrlViewCancelButton: UIButton!
     @IBOutlet weak var bottomUrlViewBotConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomUrlTextField: UITextField!
     
@@ -57,10 +56,8 @@ class ShortURLViewController: UIViewController {
     private func updateUI() {
         localDataManager.loadData()
         if bottomUrlTextField.text == nil || bottomUrlTextField.text == "" {
-            bottomUrlViewCancelButton.isHidden = true
             bottomUrlViewPasteButton.isHidden = false
         } else {
-            bottomUrlViewCancelButton.isHidden = false
             bottomUrlViewPasteButton.isHidden = true
         }
         successTrueResultUrlLabel.text = displayedURL
@@ -156,12 +153,6 @@ class ShortURLViewController: UIViewController {
     }
 
     //MARK: - IBAction Buttons
-    
-    @IBAction func bottomUrlViewCancelButtonPressed(_ sender: Any) {
-        bottomUrlTextField.text = ""
-        updateUI()
-        bottomUrlTextField.becomeFirstResponder()
-    }
     
     @IBAction func bottomUrlViewPasteButtonPressed(_ sender: Any) {
         if let clipboardString = UIPasteboard.general.string {

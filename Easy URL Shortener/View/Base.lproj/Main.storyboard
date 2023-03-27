@@ -271,8 +271,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXH-he-hGW" userLabel="Search View">
                                         <rect key="frame" x="16" y="10" width="361" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill a URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-h4-vMH">
-                                                <rect key="frame" x="12" y="0.0" width="212.66666666666666" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill a URL" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-h4-vMH">
+                                                <rect key="frame" x="12" y="0.0" width="337" height="40"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" textContentType="url"/>
@@ -280,40 +280,27 @@
                                                     <outlet property="delegate" destination="gsR-Fy-AOc" id="f4K-4x-IgY"/>
                                                 </connections>
                                             </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-bS-Ofo">
-                                                <rect key="frame" x="224.66666666666663" y="0.0" width="136.33333333333337" height="40"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYS-sl-asj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42.666666666666664" height="40"/>
-                                                        <color key="tintColor" red="0.55293989180000003" green="0.55686318869999996" blue="0.57254809139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system" buttonSize="small"/>
-                                                        <connections>
-                                                            <action selector="bottomUrlViewCancelButtonPressed:" destination="gsR-Fy-AOc" eventType="touchUpInside" id="92z-uY-eiq"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fB-Ox-MtS">
-                                                        <rect key="frame" x="42.666666666666664" y="0.0" width="93.666666666666686" height="40"/>
-                                                        <color key="tintColor" systemColor="tintColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="doc.on.doc" catalog="system" title="Paste"/>
-                                                        <connections>
-                                                            <action selector="bottomUrlViewPasteButtonPressed:" destination="gsR-Fy-AOc" eventType="touchUpInside" id="ejX-nj-4lD"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fB-Ox-MtS">
+                                                <rect key="frame" x="267.33333333333331" y="2" width="93.666666666666686" height="34.333333333333336"/>
+                                                <color key="tintColor" systemColor="tintColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="doc.on.doc" catalog="system" title="Paste"/>
+                                                <connections>
+                                                    <action selector="bottomUrlViewPasteButtonPressed:" destination="gsR-Fy-AOc" eventType="touchUpInside" id="ejX-nj-4lD"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="g8z-bS-Ofo" secondAttribute="bottom" id="G7K-4p-OEm"/>
                                             <constraint firstItem="iH9-h4-vMH" firstAttribute="leading" secondItem="oXH-he-hGW" secondAttribute="leading" constant="12" id="KYT-kV-LXa"/>
-                                            <constraint firstItem="g8z-bS-Ofo" firstAttribute="top" secondItem="oXH-he-hGW" secondAttribute="top" id="Nv8-j7-fjj"/>
+                                            <constraint firstAttribute="trailing" secondItem="iH9-h4-vMH" secondAttribute="trailing" constant="12" id="Phq-bU-adB"/>
                                             <constraint firstAttribute="height" constant="40" id="REO-Z0-Qft"/>
+                                            <constraint firstAttribute="trailing" secondItem="5fB-Ox-MtS" secondAttribute="trailing" id="UB9-Lh-zmy"/>
                                             <constraint firstItem="iH9-h4-vMH" firstAttribute="top" secondItem="oXH-he-hGW" secondAttribute="top" id="fFC-Cx-oop"/>
                                             <constraint firstAttribute="bottom" secondItem="iH9-h4-vMH" secondAttribute="bottom" id="lck-vD-ahs"/>
-                                            <constraint firstItem="g8z-bS-Ofo" firstAttribute="leading" secondItem="iH9-h4-vMH" secondAttribute="trailing" id="y1c-aQ-2jv"/>
-                                            <constraint firstAttribute="trailing" secondItem="g8z-bS-Ofo" secondAttribute="trailing" id="zpc-Gn-6k7"/>
+                                            <constraint firstAttribute="bottom" secondItem="5fB-Ox-MtS" secondAttribute="bottom" constant="3.6699999999999999" id="wjJ-t1-WdJ"/>
+                                            <constraint firstItem="5fB-Ox-MtS" firstAttribute="top" secondItem="oXH-he-hGW" secondAttribute="top" constant="2" id="x8q-IM-aro"/>
+                                            <constraint firstItem="5fB-Ox-MtS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oXH-he-hGW" secondAttribute="leading" constant="20" symbolic="YES" id="yTo-xR-KlX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -349,7 +336,6 @@
                         <outlet property="bottomUrlTextField" destination="iH9-h4-vMH" id="ZfE-Vx-dTh"/>
                         <outlet property="bottomUrlView" destination="oXH-he-hGW" id="KC5-Qp-5fl"/>
                         <outlet property="bottomUrlViewBotConstraint" destination="64o-N1-K5G" id="ftA-Tg-6HW"/>
-                        <outlet property="bottomUrlViewCancelButton" destination="WYS-sl-asj" id="px5-MD-Inj"/>
                         <outlet property="bottomUrlViewPasteButton" destination="5fB-Ox-MtS" id="FIc-0z-Owh"/>
                         <outlet property="bottomView" destination="iLB-E2-aPJ" id="Nsb-wj-58M"/>
                         <outlet property="historyTableView" destination="FlG-hN-Cgh" id="mRF-A4-CvT"/>
@@ -487,7 +473,6 @@
         <image name="network" catalog="system" width="128" height="123"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
