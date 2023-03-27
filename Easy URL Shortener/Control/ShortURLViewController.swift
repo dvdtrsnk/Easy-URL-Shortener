@@ -179,8 +179,10 @@ class ShortURLViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         if let url = URL(string: displayedShortURL!) {
-        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        present(activityController, animated: true, completion: nil)
+            DispatchQueue.main.async { [self] in
+                let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                present(activityController, animated: true, completion: nil)
+            }
         }
     }
     
