@@ -21,6 +21,9 @@
 		63A63CA429CC9FC100FDFA06 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA329CC9FC100FDFA06 /* URLModel.swift */; };
 		63A63CA629CCBCA900FDFA06 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA529CCBCA900FDFA06 /* LocalDataManager.swift */; };
 		63A63CA829D0826700FDFA06 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A63CA729D0826700FDFA06 /* QRViewController.swift */; };
+		9775D1F429D1ABED00C22915 /* PreferencesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9775D1F329D1ABED00C22915 /* PreferencesOptions.swift */; };
+		9775D1FB29D1B53800C22915 /* PreferencesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9775D1F929D1B53800C22915 /* PreferencesCell.swift */; };
+		9775D1FC29D1B53800C22915 /* PreferencesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9775D1FA29D1B53800C22915 /* PreferencesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		63A63CA329CC9FC100FDFA06 /* URLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLModel.swift; sourceTree = "<group>"; };
 		63A63CA529CCBCA900FDFA06 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		63A63CA729D0826700FDFA06 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		9775D1F329D1ABED00C22915 /* PreferencesOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesOptions.swift; sourceTree = "<group>"; };
+		9775D1F929D1B53800C22915 /* PreferencesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesCell.swift; sourceTree = "<group>"; };
+		9775D1FA29D1B53800C22915 /* PreferencesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				6375A13529CA006100D56E64 /* Main.storyboard */,
+				9775D1F929D1B53800C22915 /* PreferencesCell.swift */,
+				9775D1FA29D1B53800C22915 /* PreferencesCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,6 +119,7 @@
 				63A63CA129CB891300FDFA06 /* URLData.swift */,
 				63A63CA329CC9FC100FDFA06 /* URLModel.swift */,
 				63A63CA529CCBCA900FDFA06 /* LocalDataManager.swift */,
+				9775D1F329D1ABED00C22915 /* PreferencesOptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 			files = (
 				6375A13F29CA006200D56E64 /* LaunchScreen.storyboard in Resources */,
 				6375A13C29CA006200D56E64 /* Assets.xcassets in Resources */,
+				9775D1FC29D1B53800C22915 /* PreferencesCell.xib in Resources */,
 				6375A13729CA006100D56E64 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,9 +198,11 @@
 			files = (
 				6375A13A29CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld in Sources */,
 				6375A13429CA006100D56E64 /* ShortURLViewController.swift in Sources */,
+				9775D1FB29D1B53800C22915 /* PreferencesCell.swift in Sources */,
 				6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */,
 				6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */,
 				63A63CA429CC9FC100FDFA06 /* URLModel.swift in Sources */,
+				9775D1F429D1ABED00C22915 /* PreferencesOptions.swift in Sources */,
 				63A63CA829D0826700FDFA06 /* QRViewController.swift in Sources */,
 				63A63CA629CCBCA900FDFA06 /* LocalDataManager.swift in Sources */,
 				6375A14F29CAF22F00D56E64 /* PreferencesViewController.swift in Sources */,

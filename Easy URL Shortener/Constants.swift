@@ -24,4 +24,8 @@ struct K {
     struct Segue {
         static let showQR = "ShowQRSegue"
     }
+    
+    struct Cells {
+        static let preferencesCell = "PreferencesCell"
+    }
 }

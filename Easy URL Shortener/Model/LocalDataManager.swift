@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 struct LocalDataManager {
-    var items = [SearchedItem]()
     
+    var items = [SearchedItem]()
     
     func saveData() {
         do {
@@ -30,6 +30,19 @@ struct LocalDataManager {
             self.items = try K.context.fetch(request)
         } catch {
             print("Error fetching data: \(error)")
+        }
+    }
+    
+    mutating func deleteAllData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "SearchedItem")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try K.context.execute(batchDeleteRequest)
+            items.removeAll()
+            saveData()
+        } catch {
+            print("Error deleting data: \(error)")
         }
     }
 }

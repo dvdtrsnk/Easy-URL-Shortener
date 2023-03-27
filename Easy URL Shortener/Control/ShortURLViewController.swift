@@ -40,9 +40,11 @@ class ShortURLViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         registerNotificationsAndDelegates()
-        updateUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateUI()
+    }
     
     //MARK: - Functions()
     
@@ -235,7 +237,7 @@ extension ShortURLViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = localDataManager.items[indexPath.row].full
-        
+        cell.backgroundColor = UIColor(named: "viewBackgroundColorSet")
 
         return cell
     }

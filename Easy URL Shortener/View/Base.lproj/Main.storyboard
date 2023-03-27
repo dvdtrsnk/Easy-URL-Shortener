@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dy1-FI-2S5">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dy1-FI-2S5">
                                 <rect key="frame" x="0.0" y="59" width="393" height="652"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-36-HY1">
@@ -134,7 +135,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-m7-ghy" userLabel="SuccessTrueResultView">
                                                                 <rect key="frame" x="0.0" y="429.66666666666663" width="361" height="269"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-mF-wPp">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-mF-wPp">
                                                                         <rect key="frame" x="16" y="16" width="329" height="237"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wS-Bh-UxX">
@@ -143,7 +144,7 @@
                                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.yourURL.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oi-gf-VVQ">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.yourURL.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oi-gf-VVQ">
                                                                                 <rect key="frame" x="0.0" y="49" width="329" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -201,7 +202,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="viewBackgroundColorSet"/>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -225,7 +226,7 @@
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FlG-hN-Cgh">
                                                         <rect key="frame" x="16" y="82" width="361" height="110"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="viewBackgroundColorSet"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="gsR-Fy-AOc" id="Nwr-wg-zaR"/>
                                                             <outlet property="delegate" destination="gsR-Fy-AOc" id="eCw-2Z-ZwX"/>
@@ -246,7 +247,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94509822129999999" green="0.94117665289999997" blue="0.95686203240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="UuV-36-HY1" firstAttribute="bottom" secondItem="QNa-WX-Qvj" secondAttribute="bottom" id="bYg-6y-tFh"/>
                                     <constraint firstItem="UuV-36-HY1" firstAttribute="top" secondItem="QNa-WX-Qvj" secondAttribute="top" id="brp-wD-XEW"/>
@@ -266,14 +266,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="58"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
-                                        <blurEffect style="systemChromeMaterial"/>
+                                        <blurEffect style="prominent"/>
                                     </visualEffectView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXH-he-hGW" userLabel="Search View">
                                         <rect key="frame" x="16" y="10" width="361" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill a URL" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-h4-vMH">
                                                 <rect key="frame" x="12" y="0.0" width="337" height="40"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" textContentType="url"/>
                                                 <connections>
@@ -317,7 +316,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qve-bF-hZk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColorSet"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="iLB-E2-aPJ" secondAttribute="bottom" constant="83" id="64o-N1-K5G"/>
                             <constraint firstItem="iLB-E2-aPJ" firstAttribute="leading" secondItem="qve-bF-hZk" secondAttribute="leading" id="9in-vt-rX3"/>
@@ -365,7 +364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogy-L6-BIZ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogy-L6-BIZ">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NDx-J1-V1D">
@@ -381,7 +380,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBrownColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="hYH-df-bWd" secondAttribute="bottom" constant="16" id="DWl-Wh-RqT"/>
                                                     <constraint firstItem="hYH-df-bWd" firstAttribute="top" secondItem="XLW-By-KO4" secondAttribute="top" constant="32" id="Dt5-An-3P7"/>
@@ -391,9 +389,22 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEP-mO-awl" userLabel="Preferences View">
                                                 <rect key="frame" x="0.0" y="90" width="393" height="800"/>
-                                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                                <subviews>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pkC-ze-We1">
+                                                        <rect key="frame" x="16" y="0.0" width="361" height="800"/>
+                                                        <color key="backgroundColor" name="viewBackgroundColorSet"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="cGl-BM-Yjs" id="2Lf-JN-56G"/>
+                                                            <outlet property="delegate" destination="cGl-BM-Yjs" id="gsV-kp-LEc"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pkC-ze-We1" secondAttribute="bottom" id="Av0-ZZ-otX"/>
+                                                    <constraint firstItem="pkC-ze-We1" firstAttribute="top" secondItem="YEP-mO-awl" secondAttribute="top" id="F57-n2-gUj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pkC-ze-We1" secondAttribute="trailing" constant="16" id="HaW-Wg-yGb"/>
                                                     <constraint firstAttribute="height" constant="800" id="YC5-jO-I9d"/>
+                                                    <constraint firstItem="pkC-ze-We1" firstAttribute="leading" secondItem="YEP-mO-awl" secondAttribute="leading" constant="16" id="vzq-ud-Y4U"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -411,7 +422,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="47A-v5-ZOu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColorSet"/>
                         <constraints>
                             <constraint firstItem="ogy-L6-BIZ" firstAttribute="top" secondItem="47A-v5-ZOu" secondAttribute="top" id="0V1-JI-RgP"/>
                             <constraint firstItem="ogy-L6-BIZ" firstAttribute="leading" secondItem="47A-v5-ZOu" secondAttribute="leading" id="5Mm-5a-tjZ"/>
@@ -422,6 +433,10 @@
                     <tabBarItem key="tabBarItem" title="Preferences" id="emE-r0-StR">
                         <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="preferencesTableView" destination="pkC-ze-We1" id="XmW-Vf-1XL"/>
+                        <outlet property="preferencesTableViewHeight" destination="YC5-jO-I9d" id="Y5E-gh-MDK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60L-ol-Bve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,7 +451,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_background_fade" translatesAutoresizingMaskIntoConstraints="NO" id="VDd-UI-Yrl" userLabel="background">
-                                <rect key="frame" x="0.0" y="-15" width="393" height="848"/>
+                                <rect key="frame" x="0.0" y="-15" width="393" height="828"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cfi-nj-dxP">
                                 <rect key="frame" x="71.666666666666686" y="268.33333333333337" width="250" height="247.00000000000003"/>
@@ -448,7 +463,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uuD-j0-wBm"/>
                         <constraints>
-                            <constraint firstItem="VDd-UI-Yrl" firstAttribute="bottom" secondItem="uuD-j0-wBm" secondAttribute="bottom" constant="50" id="6l6-SH-baz"/>
+                            <constraint firstItem="VDd-UI-Yrl" firstAttribute="bottom" secondItem="uuD-j0-wBm" secondAttribute="bottom" constant="30" id="6l6-SH-baz"/>
                             <constraint firstItem="cfi-nj-dxP" firstAttribute="centerX" secondItem="oVg-xm-Rln" secondAttribute="centerX" id="8nz-OF-87M"/>
                             <constraint firstItem="VDd-UI-Yrl" firstAttribute="leading" secondItem="uuD-j0-wBm" secondAttribute="leading" id="Yct-15-G8P"/>
                             <constraint firstItem="VDd-UI-Yrl" firstAttribute="top" secondItem="oVg-xm-Rln" secondAttribute="top" constant="-15" id="sj3-OA-v1A"/>
@@ -462,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ml-pJ-0t6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1280.1526717557251" y="2024.6478873239437"/>
+            <point key="canvasLocation" x="-1280" y="2025"/>
         </scene>
     </scenes>
     <resources>
@@ -473,11 +488,14 @@
         <image name="network" catalog="system" width="128" height="123"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <namedColor name="backgroundColorSet">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="viewBackgroundColorSet">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
