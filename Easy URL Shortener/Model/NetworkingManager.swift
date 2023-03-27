@@ -47,7 +47,7 @@ struct NetworkingManager {
     func performRequest(_ filledURL: String) {
         if deviceHasInternetConnection() {
             let urlString = "https://ulvis.net/API/write/get?url=\(filledURL)"
-            if let url = URL(string: urlString) {
+            if let url =  URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
                 let task = URLSession(configuration: .default).dataTask(with: url) { (recievedData, response, error) in
                     if let recievedError = error {
                         print(recievedError)
