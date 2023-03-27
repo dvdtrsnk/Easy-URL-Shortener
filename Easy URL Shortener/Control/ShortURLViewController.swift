@@ -257,4 +257,12 @@ extension ShortURLViewController: UITableViewDelegate {
         userPressedGo()
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            K.context.delete(localDataManager.items[indexPath.row])
+            localDataManager.saveData()
+            updateUI()
+        }
+    }
+    
 }

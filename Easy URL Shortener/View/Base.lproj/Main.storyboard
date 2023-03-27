@@ -445,7 +445,7 @@
         <scene sceneID="Kxf-M2-yQC">
             <objects>
                 <viewController id="UIp-Mv-iNC" userLabel="QR View Controller" customClass="QRViewController" customModule="Easy_URL_Shortener" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oVg-xm-Rln" customClass="QRViewC">
+                    <view key="view" contentMode="scaleToFill" id="oVg-xm-Rln">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
