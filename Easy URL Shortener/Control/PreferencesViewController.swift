@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import StoreKit
+import SPConfetti
 
 class PreferencesViewController: UIViewController {
+    
+    var userTippedApp = false
+    let productID = "com.dvdtrsnk.URLShortenerEasy.1Tip"
 
     var localDataManager = LocalDataManager()
     
-    let preferences = [ PreferencesOptions(name: "Help", icon: (UIImage(systemName: "questionmark")?.withRenderingMode(.alwaysTemplate))!),
+    var preferences = [ PreferencesOptions(name: "Help", icon: (UIImage(systemName: "questionmark")?.withRenderingMode(.alwaysTemplate))!),
                         PreferencesOptions(name: "Delete History", icon: (UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate))!),
-                        PreferencesOptions(name: "Support Website", icon: (UIImage(systemName: "network")?.withRenderingMode(.alwaysTemplate))!)  ]
+                        PreferencesOptions(name: "Support Website", icon: (UIImage(systemName: "network")?.withRenderingMode(.alwaysTemplate))!) ]
     
     
     @IBOutlet weak var preferencesTableViewHeight: NSLayoutConstraint!
@@ -21,19 +26,46 @@ class PreferencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        loadUserData()
+        registerCellsAndDelegates()
         setUI()
     }
     
     //MARK: - Functions()
-    func setUI() {
-        preferencesTableView.layer.cornerRadius = 10
-        preferencesTableViewHeight.constant = CGFloat(preferences.count * 44)
+    private func loadUserData() {
+        userTippedApp = UserDefaults.standard.bool(forKey: "UserTippedApp")
     }
     
-    private func registerCells() {
-        preferencesTableView.register(UINib(nibName: K.Cells.preferencesCell, bundle: nil), forCellReuseIdentifier: K.Cells.preferencesCell)
+    private func setUI() {
+        
+        if userTippedApp == true {
+            preferences.append(PreferencesOptions(name: "Thank you for your support!", icon: (UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate))!))
+        } else {
+            preferences.append(PreferencesOptions(name: "Do you like this app? Support me with 1$!", icon: (UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate))!))
+        }
+        
+        preferencesTableView.layer.cornerRadius = 10
+        preferencesTableViewHeight.constant = CGFloat(preferences.count * 45)
+        
+        preferencesTableView.reloadData()
     }
+    
+    private func registerCellsAndDelegates() {
+        preferencesTableView.register(UINib(nibName: K.Cells.preferencesCell, bundle: nil), forCellReuseIdentifier: K.Cells.preferencesCell)
+        SKPaymentQueue.default().add(self)
+
+    }
+    
+    private func supportCelebration() {
+        let alert = UIAlertController(title: nil, message: "You supported me with 1$! Thank you!", preferredStyle: .alert)
+        self.present(alert, animated: true)
+        SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc])
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 7) {
+            SPConfetti.stopAnimating()
+            alert.dismiss(animated: true, completion: nil)
+            }
+    }
+    
     
 }
 
@@ -68,6 +100,10 @@ extension PreferencesViewController: UITableViewDelegate {
             if let url = URL(string: "https://dvdtrsnk.wordpress.com") {
                 UIApplication.shared.open(url)
             }
+        case "Do you like this app? Support me with 1$!":
+            tipOptionPressed()
+        case "Thank you for your support!":
+            supportCelebration()
         default:
             break
         }
@@ -98,5 +134,45 @@ If you encounter any issues, please don't hesitate to contact me through the Sup
         present(alert, animated: true, completion: nil)
     }
     
+    func tipOptionPressed() {
+        if SKPaymentQueue.canMakePayments() {
+            //can make Payments
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID
+            SKPaymentQueue.default().add(paymentRequest)
+        } else {
+            //CANT
+            print("User cant make payments")
+        }
+    }
+    
+}
+
+
+//MARK: - SKPaymentTransactionObserver
+extension PreferencesViewController: SKPaymentTransactionObserver {
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+            for transaction in transactions {
+                if transaction.transactionState == .purchased {
+                    if userTippedApp == false {
+                        preferences.remove(at: 3)
+                        supportCelebration()
+                        UserDefaults.standard.set(true, forKey: "UserTippedApp")
+                        loadUserData()
+                        preferencesTableView.reloadData()
+                    }
+                                        
+                } else if transaction.transactionState == .failed {
+                    print("Transaction Failed!")
+                    if let error = transaction.error {
+                        let errorDescription = error.localizedDescription
+                        print("Transaction failed due to error: \(errorDescription)")
+                    }
+                }
+            }
+        }
+    
+
 }
 

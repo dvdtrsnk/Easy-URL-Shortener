@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6367422029D45AAB006FC450 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367421F29D45AAB006FC450 /* StoreKit.framework */; };
+		6367422629D479E1006FC450 /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = 6367422529D479E1006FC450 /* SPConfetti */; };
 		6375A13029CA006100D56E64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A12F29CA006100D56E64 /* AppDelegate.swift */; };
 		6375A13229CA006100D56E64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13129CA006100D56E64 /* SceneDelegate.swift */; };
 		6375A13429CA006100D56E64 /* ShortURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375A13329CA006100D56E64 /* ShortURLViewController.swift */; };
@@ -27,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6367421F29D45AAB006FC450 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6375A12C29CA006100D56E64 /* Easy URL Shortener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy URL Shortener.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6375A12F29CA006100D56E64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6375A13129CA006100D56E64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,17 +56,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6367422029D45AAB006FC450 /* StoreKit.framework in Frameworks */,
+				6367422629D479E1006FC450 /* SPConfetti in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6367421E29D45AAB006FC450 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6367421F29D45AAB006FC450 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6375A12329CA006100D56E64 = {
 			isa = PBXGroup;
 			children = (
 				6375A12E29CA006100D56E64 /* Easy URL Shortener */,
 				6375A12D29CA006100D56E64 /* Products */,
+				6367421E29D45AAB006FC450 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +154,9 @@
 			dependencies = (
 			);
 			name = "Easy URL Shortener";
+			packageProductDependencies = (
+				6367422529D479E1006FC450 /* SPConfetti */,
+			);
 			productName = "Easy URL Shortener";
 			productReference = 6375A12C29CA006100D56E64 /* Easy URL Shortener.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 6375A12329CA006100D56E64;
+			packageReferences = (
+				6367422429D479E1006FC450 /* XCRemoteSwiftPackageReference "SPConfetti" */,
+			);
 			productRefGroup = 6375A12D29CA006100D56E64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -378,7 +398,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -412,7 +432,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -438,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6367422429D479E1006FC450 /* XCRemoteSwiftPackageReference "SPConfetti" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPConfetti";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6367422529D479E1006FC450 /* SPConfetti */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6367422429D479E1006FC450 /* XCRemoteSwiftPackageReference "SPConfetti" */;
+			productName = SPConfetti;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6375A13829CA006100D56E64 /* Easy_URL_Shortener.xcdatamodeld */ = {

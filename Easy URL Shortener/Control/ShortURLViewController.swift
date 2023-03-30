@@ -70,6 +70,7 @@ class ShortURLViewController: UIViewController {
     }
     
     private func showCorrectResultView(named: String) {
+        print("resultview: \(named)")
         noResultView.isHidden = true
         waitResultView.isHidden = true
         noInternetConnectionResultView.isHidden = true
@@ -168,7 +169,7 @@ class ShortURLViewController: UIViewController {
     @IBAction func copyButtonPressed(_ sender: UIButton) {
         if let url = displayedShortURL {
             UIPasteboard.general.string = url
-            let alert = UIAlertController(title: nil, message: "URL was copied to clipboard", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "URL copied to clipboard.", preferredStyle: .alert)
             self.present(alert, animated: true)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
                 alert.dismiss(animated: true, completion: nil)
@@ -211,7 +212,9 @@ extension ShortURLViewController: UITextFieldDelegate {
 extension ShortURLViewController: NetworkingManagerDelegate {
     
     func deviceDoesNotHaveInternetConnection() {
-        showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
+        DispatchQueue.main.async { [self] in
+            showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
+        }
     }
     
     func serverDidReturnSuccessTrue(_ recievedURL: URLModel) {

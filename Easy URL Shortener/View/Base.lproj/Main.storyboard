@@ -40,25 +40,32 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="652"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UuV-36-HY1">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="996.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1112.3333333333333"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-NK-hKm" userLabel="Result View">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="796.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="912.33333333333337"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shorten URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npG-ac-4vQ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npG-ac-4vQ">
                                                         <rect key="frame" x="24" y="32" width="345" height="42"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QAi-7K-k5I" userLabel="Results StackView">
-                                                        <rect key="frame" x="16" y="90" width="361" height="698.66666666666663"/>
+                                                        <rect key="frame" x="16" y="90" width="361" height="814.33333333333337"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-6L-KIl" userLabel="NoResultView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="72.666666666666671"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="134"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results to show yet. Fill adress to the URL field and confirm by pressing &quot;Go&quot;." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ra-CM-8nv">
-                                                                        <rect key="frame" x="16" y="15.999999999999996" width="329" height="40.666666666666657"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="czx-cC-UBE">
+                                                                        <rect key="frame" x="168" y="17" width="25" height="23.333333333333336"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="1YM-lp-XKQ"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="Ns6-oB-MIU"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are currently no results to display. Please enter an address in the URL field and click &quot;Go&quot; to confirm." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ra-CM-8nv">
+                                                                        <rect key="frame" x="16" y="57" width="329" height="61"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -66,16 +73,18 @@
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="4ra-CM-8nv" firstAttribute="leading" secondItem="6xx-6L-KIl" secondAttribute="leading" constant="16" id="72l-3h-xA4"/>
-                                                                    <constraint firstItem="4ra-CM-8nv" firstAttribute="top" secondItem="6xx-6L-KIl" secondAttribute="top" constant="16" id="Jkv-Pg-sYo"/>
+                                                                    <constraint firstItem="czx-cC-UBE" firstAttribute="centerX" secondItem="6xx-6L-KIl" secondAttribute="centerX" id="el3-gm-9B4"/>
+                                                                    <constraint firstItem="4ra-CM-8nv" firstAttribute="top" secondItem="czx-cC-UBE" secondAttribute="bottom" constant="16" id="fOw-EA-uan"/>
                                                                     <constraint firstAttribute="trailing" secondItem="4ra-CM-8nv" secondAttribute="trailing" constant="16" id="h22-1h-Krn"/>
+                                                                    <constraint firstItem="czx-cC-UBE" firstAttribute="top" secondItem="6xx-6L-KIl" secondAttribute="top" constant="16" id="sm2-xE-Zyc"/>
                                                                     <constraint firstAttribute="bottom" secondItem="4ra-CM-8nv" secondAttribute="bottom" constant="16" id="uR6-wa-IS5"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au6-3I-nHz" userLabel="waitResultView">
-                                                                <rect key="frame" x="0.0" y="72.666666666666657" width="361" height="128"/>
+                                                                <rect key="frame" x="0.0" y="134" width="361" height="128"/>
                                                                 <subviews>
                                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="X7u-qk-uPA">
-                                                                        <rect key="frame" x="155.66666666666666" y="39.000000000000028" width="50" height="50"/>
+                                                                        <rect key="frame" x="155.66666666666666" y="39" width="50" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="HM9-dv-3dh"/>
                                                                             <constraint firstAttribute="height" constant="50" id="sY6-SR-Cjx"/>
@@ -89,18 +98,18 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5m-IW-RXY" userLabel="noInternetConnectionResultView">
-                                                                <rect key="frame" x="0.0" y="200.66666666666669" width="361" height="101"/>
+                                                                <rect key="frame" x="0.0" y="262" width="361" height="109"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-kR-Rda">
-                                                                        <rect key="frame" x="16" y="16" width="329" height="69"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-kR-Rda">
+                                                                        <rect key="frame" x="16" y="16" width="329" height="77"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P8B-8Q-OjP">
                                                                                 <rect key="frame" x="0.0" y="-1.6666666666666679" width="329" height="22.333333333333336"/>
-                                                                                <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="tintColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <imageReference key="image" image="exclamationmark.icloud.fill" catalog="system" symbolScale="large"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Problem with Shortening your URL. Check your internet connection." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-6V-NCU">
-                                                                                <rect key="frame" x="0.0" y="28.333333333333311" width="329" height="40.666666666666657"/>
+                                                                                <rect key="frame" x="0.0" y="36.333333333333314" width="329" height="40.666666666666657"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -116,24 +125,34 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtH-z3-IIL" userLabel="SuccessFalseResultView">
-                                                                <rect key="frame" x="0.0" y="301.66666666666669" width="361" height="128"/>
+                                                                <rect key="frame" x="0.0" y="371" width="361" height="174.33333333333337"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success False - bad URL " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oy-jM-Bc1">
-                                                                        <rect key="frame" x="16" y="16" width="329" height="96"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oy-jM-Bc1">
+                                                                        <rect key="frame" x="16" y="56.999999999999993" width="329" height="101.33333333333331"/>
+                                                                        <string key="text">Please ensure that your URL is in the correct format as "https://www." is required. An error occurred during the URL shortening process.</string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-IH-uQn">
+                                                                        <rect key="frame" x="168" y="17.333333333333332" width="25" height="22.666666666666668"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="ORr-hc-lRE"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="WJl-CA-qEW"/>
+                                                                        </constraints>
+                                                                    </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="0Oy-jM-Bc1" firstAttribute="top" secondItem="TtH-z3-IIL" secondAttribute="top" constant="16" id="5Yv-nb-UrF"/>
+                                                                    <constraint firstItem="0Oy-jM-Bc1" firstAttribute="top" secondItem="fLX-IH-uQn" secondAttribute="bottom" constant="16" id="6Wc-pq-6hQ"/>
                                                                     <constraint firstAttribute="bottom" secondItem="0Oy-jM-Bc1" secondAttribute="bottom" constant="16" id="7lN-Rt-N7S"/>
                                                                     <constraint firstAttribute="trailing" secondItem="0Oy-jM-Bc1" secondAttribute="trailing" constant="16" id="Jno-My-Pf2"/>
+                                                                    <constraint firstItem="fLX-IH-uQn" firstAttribute="top" secondItem="TtH-z3-IIL" secondAttribute="top" constant="16" id="KfZ-ML-PUx"/>
+                                                                    <constraint firstItem="fLX-IH-uQn" firstAttribute="centerX" secondItem="TtH-z3-IIL" secondAttribute="centerX" id="TB6-4M-axQ"/>
                                                                     <constraint firstItem="0Oy-jM-Bc1" firstAttribute="leading" secondItem="TtH-z3-IIL" secondAttribute="leading" constant="16" id="hue-ha-Lfs"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-m7-ghy" userLabel="SuccessTrueResultView">
-                                                                <rect key="frame" x="0.0" y="429.66666666666663" width="361" height="269"/>
+                                                                <rect key="frame" x="0.0" y="545.33333333333337" width="361" height="269"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-mF-wPp">
                                                                         <rect key="frame" x="16" y="16" width="329" height="237"/>
@@ -150,20 +169,20 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shorten URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8r-By-tX2">
-                                                                                <rect key="frame" x="0.0" y="101.33333333333337" width="329" height="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short URL: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8r-By-tX2">
+                                                                                <rect key="frame" x="0.0" y="101.33333333333326" width="329" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.shortenURL.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34L-NU-KnU">
-                                                                                <rect key="frame" x="0.0" y="150.33333333333337" width="329" height="20.333333333333343"/>
+                                                                                <rect key="frame" x="0.0" y="150.33333333333326" width="329" height="20.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ia4-yo-NdI">
-                                                                                <rect key="frame" x="0.0" y="202.66666666666674" width="329" height="34.333333333333343"/>
+                                                                                <rect key="frame" x="0.0" y="202.66666666666663" width="329" height="34.333333333333343"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAQ-Au-LKn">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="34.333333333333336"/>
@@ -216,7 +235,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqX-bP-WLr" userLabel="History View">
-                                                <rect key="frame" x="0.0" y="796.66666666666663" width="393" height="200"/>
+                                                <rect key="frame" x="0.0" y="912.33333333333337" width="393" height="200.00000000000011"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzT-WX-URw">
                                                         <rect key="frame" x="24" y="32" width="345" height="42"/>
@@ -225,7 +244,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FlG-hN-Cgh">
-                                                        <rect key="frame" x="16" y="82" width="361" height="110"/>
+                                                        <rect key="frame" x="16" y="81.999999999999886" width="361" height="110"/>
                                                         <color key="backgroundColor" name="viewBackgroundColorSet"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="110" id="VJK-2p-MWi"/>
@@ -487,11 +506,12 @@
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="exclamationmark.icloud.fill" catalog="system" width="128" height="90"/>
         <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="network" catalog="system" width="128" height="123"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="backgroundColorSet">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="viewBackgroundColorSet">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
