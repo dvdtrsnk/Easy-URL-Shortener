@@ -24,13 +24,13 @@ class ShortURLViewController: UIViewController {
     
     @IBOutlet weak var successTrueResultUrlLabel: UILabel!
     @IBOutlet weak var successTrueResultShortUrlLabel: UILabel!
+    @IBOutlet weak var successTrueShareButton: UIButton!
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var historyTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomUrlView: UIView!
-    @IBOutlet weak var bottomBlurView: UIVisualEffectView!
     @IBOutlet weak var bottomUrlViewPasteButton: UIButton!
     @IBOutlet weak var bottomUrlViewBotConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomUrlTextField: UITextField!
@@ -53,6 +53,9 @@ class ShortURLViewController: UIViewController {
         historyTableView.layer.cornerRadius = 10
         bottomUrlView.layer.cornerRadius = 10
         showCorrectResultView(named: K.ResultViewStatus.no)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+           successTrueShareButton.isHidden = true
+        }
     }
     
     private func updateUI() {
@@ -129,8 +132,6 @@ class ShortURLViewController: UIViewController {
             bottomUrlViewBotConstraint.constant = 0 + keyboardHeight
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
-                self.bottomView.backgroundColor = UIColor(named: "keyboardBackgroundColor")
-                self.bottomBlurView.isHidden = true
             }
         }
     }
@@ -139,8 +140,6 @@ class ShortURLViewController: UIViewController {
         bottomUrlViewBotConstraint.constant = 83
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
-            self.bottomView.backgroundColor = .clear
-            self.bottomBlurView.isHidden = false
         }
     }
 

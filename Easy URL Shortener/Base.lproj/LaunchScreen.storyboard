@@ -29,12 +29,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.43131440879999999" green="0.53334802390000002" blue="0.99997991320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="C1Q-2w-2kh" secondAttribute="trailing" id="J5K-Zv-KBi"/>
                             <constraint firstItem="Ajs-Hd-Dl2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="TCJ-VD-LcO"/>
                             <constraint firstItem="C1Q-2w-2kh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="V9a-sz-9l6"/>
                             <constraint firstAttribute="bottom" secondItem="C1Q-2w-2kh" secondAttribute="bottom" id="XNW-Dv-Pov"/>
-                            <constraint firstItem="C1Q-2w-2kh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Xzb-az-S1R"/>
+                            <constraint firstItem="C1Q-2w-2kh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="n3Z-oJ-Gdd"/>
+                            <constraint firstItem="C1Q-2w-2kh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ohw-Qu-9FP"/>
                             <constraint firstItem="Ajs-Hd-Dl2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sIH-un-sCU"/>
+                            <constraint firstAttribute="trailing" secondItem="C1Q-2w-2kh" secondAttribute="trailing" id="yFf-Z4-9fz"/>
+                            <constraint firstAttribute="bottom" secondItem="C1Q-2w-2kh" secondAttribute="bottom" id="zcM-5J-UJw"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,6 +47,6 @@
     </scenes>
     <resources>
         <image name="background_loadingscreen" width="1200" height="2597"/>
-        <image name="icon_loadingscreen" width="400" height="400"/>
+        <image name="icon_loadingscreen" width="400" height="130"/>
     </resources>
 </document>
