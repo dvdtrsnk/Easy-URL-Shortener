@@ -52,7 +52,7 @@ class ShortURLViewController: UIViewController {
         resultStackView.layer.cornerRadius = 10
         historyTableView.layer.cornerRadius = 10
         bottomUrlView.layer.cornerRadius = 10
-        showCorrectResultView(named: K.ResultViewStatus.no)
+        changeDisplayedResultView(named: .no)
         if UIDevice.current.userInterfaceIdiom == .pad {
            successTrueShareButton.isHidden = true
         }
@@ -72,7 +72,12 @@ class ShortURLViewController: UIViewController {
         historyTableViewHeight.constant = CGFloat(min(localDataManager.items.count * 44, 880))
     }
     
-    private func showCorrectResultView(named: String) {
+    
+    enum displayedResultView {
+        case no, wait, noInternetConnection, successFalse, successTrue
+    }
+    
+    private func changeDisplayedResultView(named: displayedResultView) {
         print("resultview: \(named)")
         noResultView.isHidden = true
         waitResultView.isHidden = true
@@ -81,18 +86,16 @@ class ShortURLViewController: UIViewController {
         successTrueResultView.isHidden = true
         UIView.animate(withDuration: 0.3) { [self] in
             switch named {
-            case K.ResultViewStatus.no:
+            case .no:
                 noResultView.isHidden = false
-            case K.ResultViewStatus.wait:
+            case .wait:
                 waitResultView.isHidden = false
-            case K.ResultViewStatus.noInternetConnection:
+            case .noInternetConnection:
                 noInternetConnectionResultView.isHidden = false
-            case K.ResultViewStatus.successFalse:
+            case .successFalse:
                 successFalseResultView.isHidden = false
-            case K.ResultViewStatus.successTrue:
+            case .successTrue:
                 successTrueResultView.isHidden = false
-            default:
-                break
             }
         }
         
@@ -101,7 +104,7 @@ class ShortURLViewController: UIViewController {
     private func userPressedGo() {
         if bottomUrlTextField.text != nil || bottomUrlTextField.text != "" {
             networkingManager.performRequest(bottomUrlTextField.text!)
-            showCorrectResultView(named: K.ResultViewStatus.wait)
+            changeDisplayedResultView(named: .wait)
             
             
             let duplicatesToDelete = localDataManager.items.filter { $0.full == bottomUrlTextField.text }
@@ -212,7 +215,7 @@ extension ShortURLViewController: NetworkingManagerDelegate {
     
     func deviceDoesNotHaveInternetConnection() {
         DispatchQueue.main.async { [self] in
-            showCorrectResultView(named: K.ResultViewStatus.noInternetConnection)
+            changeDisplayedResultView(named: .noInternetConnection)
         }
     }
     
@@ -221,13 +224,13 @@ extension ShortURLViewController: NetworkingManagerDelegate {
             displayedURL = recievedURL.full
             displayedShortURL = recievedURL.url
             updateUI()
-            showCorrectResultView(named: K.ResultViewStatus.successTrue)
+            changeDisplayedResultView(named: .successTrue)
         }
     }
     
     func serverDidReturnSuccessFalse() {
         DispatchQueue.main.async { [self] in
-            showCorrectResultView(named: K.ResultViewStatus.successFalse)
+            changeDisplayedResultView(named: .successFalse)
         }
     }
 
