@@ -32,12 +32,12 @@ class QRViewController: UIViewController {
         let data = string.data(using: String.Encoding.ascii)
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            filter.setValue("H", forKey: "inputCorrectionLevel") // nastaví kvalitu kódu na high
+            filter.setValue("H", forKey: "inputCorrectionLevel")
             if let output = filter.outputImage {
-                let invertFilter = CIFilter(name: "CIColorInvert") // inverzní filtr pro obrácení barev
+                let invertFilter = CIFilter(name: "CIColorInvert")
                 invertFilter?.setValue(output, forKey: kCIInputImageKey)
                 let maskedQR = invertFilter?.outputImage?.transformed(by: CGAffineTransform(scaleX: 15, y: 15))
-                let maskFilter = CIFilter(name: "CIMaskToAlpha") // převod masky na alfu
+                let maskFilter = CIFilter(name: "CIMaskToAlpha")
                 maskFilter?.setValue(maskedQR, forKey: kCIInputImageKey)
                 if let maskedOutput = maskFilter?.outputImage {
                     return UIImage(ciImage: maskedOutput)
